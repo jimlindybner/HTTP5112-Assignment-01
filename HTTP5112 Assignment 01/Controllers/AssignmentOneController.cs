@@ -101,21 +101,34 @@ namespace HTTP5112_Assignment_01.Controllers
 
         [HttpGet]
         [Route("api/HostingCost/{id}")]
-        //Charge = $5.50/FN
+        //Question 6 : Initiative Question
+        //Note: Initiative questions are more challenging than regular questions.If you cannot solve the entire question, that’s okay! Describe your approach to the problem using comments.
+        
+        //Charge = $5.50/fortnight
         //HST = 13%
         //{id} number of days elapsed
         //Output: 3 strings describing total cost
-        public int HostingCost(int id)
+
+        //create a variable fn (fortnight) = 14 (days)
+        //as long as id >= 1*fn, charge is 5.5 * 1
+        //if id > 1*fn || id <= 2*fn, charge is 5.5 * 2, and so on...
+        //there may need to be a loop that increments id and tracks how what the corresponding fn is...
+        public double HostingCost(double id)
         {
+
             double hst = 1.13;
             double charge = 5.5;
-            if (id <= 14 || id > 28)
+            double fn = 14;
+            if (id <= (1*fn))
             {
-                return hst * charge;
-            } else if (id <= 28)
+                return (hst * charge);
+            } else if (id > (1*fn) || id <= (2*fn))
             {
                 return (charge * 2) * hst;
-            }
+            } else if (id > (2*fn) || id <= (3*fn))
+            {
+                return (charge *3) * hst;
+            } //this should be done using a loop
         }
     }
 }
